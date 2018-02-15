@@ -1,0 +1,65 @@
+1. How to create a rest api?
+EST stands for Representational State Transfer. This is a term invented by Roy Fielding to describe a standard way of creating HTTP APIs. He noticed that the four common actions (view, create, edit, and delete) map directly to HTTP verbs that are already implemented: GET, POST, PUT, DELETE.
+If you're new to HTTP, you may not be familiar with some of these verbs. So let me give a brief rundown on HTTP methods.
+
+HTTP methods
+There are technically 8 different HTTP methods:
+GET,POST,PUT,DELETE,OPTIONS,HEAD,TRACE,CONNECT
+2. Difference between query param and path param?
+@Path("/data/{id}/{name}")
+        @Produces("text/plain")
+	public String add(@PathParam("id") Integer id, @PathParam("name") String name ){
+          //ToDo
+         return "result";
+	}
+
+For more detail, find the URL
+
+http://www.concretepage.com/webservices/example-pathparam-jax-rs-web-services
+
+
+QueryParam can be used as 
+
+/test/data?id=123&name=Ram
+
+       @Path("/data/{id}/{name}")
+        @Produces("text/plain")
+	public String add(@QueryParam("id") Integer id, @QueryParam("name") String name ){
+          //ToDo
+         return "result";
+	}
+
+3. What is request body?
+HTTP Body Data is the data bytes transmitted in an HTTP transaction message immediately following the headers if there is any (in the case of HTTP/0.9 no headers are transmitted).
+
+Most HTTP requests are GET requests without bodies. However, simulating requests with bodies is important to properly stress the proxy code and to test various hooks working with such requests. Most HTTP requests with bodies use POST or PUT request method.
+
+Message Body
+
+The message body part is optional for an HTTP message but if it is available then it is used to carry the entity-body associated with the request or response. If entity body is associated then usually Content-Type and Content-Length headers lines specify the nature of the body associated.
+
+A message body is the one which carries actual HTTP request data (including form data and uploaded etc.) and HTTP response data from the server ( including files, images etc). Following is a simple content of a message body:
+4. why rest over soap?
+SOAP and REST can't be compared directly, since the first is a protocol (or at least tries to be) and the second is an architectural style. This is probably one of the sources of confusion around it, since people tend to call REST any HTTP API that isn't SOAP.
+5. How to convert json data?
+Step 1) Pass the desired URL as an object:
+
+ URL url = new URL(“The required URL”); 
+
+Step 2) Type cast the URL object into a HttpURLConnection object. The benefit of doing this is that we will be able to harness the properties of the HttpURLConnection class to validate features. For example, set the request type or check the status of the response code:
+
+ HttpURLConnection conn = (HttpURLConnection)url.openConnection(); 
+
+Step 3) Set the request type, as in, whether the request to the API is a GET request or a POST request.
+
+ conn.setRequestMethod(“GET”); 
+
+Step 4) Open a connection stream to the corresponding API.
+
+ conn.connect(); 
+
+Step 5) Get the corresponding response code.
+
+ int responsecode = conn.getResponseCode(); 
+
+Step 6) Now we need to perform a check so that if the response code is not 200, we throw a runtime exception, or otherwise carry on the rest of the procedure. The structure would be like this:
