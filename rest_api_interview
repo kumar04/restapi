@@ -1,3 +1,8 @@
+Q.put and patch
+
+One of the important aspects of REST (or at least HTTP) is the concept that some operations (verbs) are idempotent. As Gregor Roth said several years ago: The PUT method is idempotent. An idempotent method means that the result of a successful performed request is independent of the number of times it is executed
+patch:partial update
+
 1. How to create a rest api?
 EST stands for Representational State Transfer. This is a term invented by Roy Fielding to describe a standard way of creating HTTP APIs. He noticed that the four common actions (view, create, edit, and delete) map directly to HTTP verbs that are already implemented: GET, POST, PUT, DELETE.
 If you're new to HTTP, you may not be familiar with some of these verbs. So let me give a brief rundown on HTTP methods.
